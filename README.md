@@ -6,6 +6,8 @@
 
 类似 其它官方说明说明文档的的布局格式
 
+使用演示地址：https://www.memoryoverflow.cn/#/
+
 #### 软件架构
 
 前后端分离
@@ -55,13 +57,32 @@ cnpm/npm run dev
 
 ```
 
-
-
-
-
 #### 使用说明
 
 将文件图片地址换成自己的即可
+
+
+#### 图片
+![首页](https://images.gitee.com/uploads/images/2019/0930/202216_e8efcdb8_1950427.png "index.png")
+
+![登陆状态](https://images.gitee.com/uploads/images/2019/0930/202248_d0e5fc38_1950427.png "WX20190930-171414@2x.png")
+
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0930/202310_59c3f974_1950427.png "WX20190930-171509@2x.png")
+
+
+![添加目录](https://images.gitee.com/uploads/images/2019/0930/202323_427210ca_1950427.png "WX20190930-171538@2x.png")
+
+![编写内容](https://images.gitee.com/uploads/images/2019/0930/202347_e4c0ebe3_1950427.png "WX20190930-171610@2x.png")
+
+
+![适应手机](https://images.gitee.com/uploads/images/2019/0930/202415_04e6bbf2_1950427.png "WX20190930-171905@2x.png")
+
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0930/202441_ce634e88_1950427.png "WX20190930-171942@2x.png")
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0930/202451_553fe21f_1950427.png "WX20190930-190210@2x.png")
+
 
 #### 参与贡献
 

@@ -30,8 +30,12 @@ public class User extends BaseEntity<User>
 
     @TableField(strategy = FieldStrategy.IGNORED)
     private String token;
-    @LColumn(defaultValue = "7200000")
-    private long tokenExpireTime;
 
+    /**
+     * <br>
+     * 10天过期
+     */
+    @LColumn(defaultValue = "864000000")
+    private long tokenExpireTime;
 
 }

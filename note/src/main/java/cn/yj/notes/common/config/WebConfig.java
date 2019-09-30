@@ -65,7 +65,7 @@ public class WebConfig extends WebMvcConfigurerAdapter
     }
 
     @Bean(name = "reqAuth")
-    public Auth auth()
+    public ReqAuth auth()
     {
         return new ReqAuth(iUserService);
     }

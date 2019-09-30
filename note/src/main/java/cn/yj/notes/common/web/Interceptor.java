@@ -1,7 +1,7 @@
 package cn.yj.notes.common.web;
 
 import cn.yj.notes.common.annotation.Authentication;
-import cn.yj.notes.common.web.auth.Auth;
+import cn.yj.notes.common.web.auth.ReqAuth;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -20,9 +20,9 @@ import java.lang.reflect.Method;
 public class Interceptor implements HandlerInterceptor
 {
 
-    private Auth auth;
+    private ReqAuth auth;
 
-    public Interceptor(Auth auth)
+    public Interceptor(ReqAuth auth)
     {
         this.auth = auth;
     }
@@ -33,19 +33,21 @@ public class Interceptor implements HandlerInterceptor
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.addHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
         response.addHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, PUT, OPTIONS");
-        response.addHeader("Access-Control-Allow-Headers",
+        response.addHeader(
+                "Access-Control-Allow-Headers",
                 "Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Accept");
 
-        log.warn("sessionId={}",request.getSession().getId());
+        log.warn("sessionId={}", request.getSession().getId());
 
 
         // 权限拦截
-        if(handler instanceof HandlerMethod)
+        if (handler instanceof HandlerMethod)
         {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             Method method = handlerMethod.getMethod();
             Authentication authentication = method.getAnnotation(Authentication.class);
-            if (authentication !=null){
+            if (authentication != null)
+            {
                 auth.isReqToken();
             }
         }

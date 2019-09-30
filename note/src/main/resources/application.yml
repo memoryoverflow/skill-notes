@@ -1,0 +1,67 @@
+#开发环境配置
+server:
+  #端口
+  tomcat:
+    uri-encoding: utf-8
+    # 修改请求头参数大小
+    max-http-header-size: 102400
+
+  # 项目访问路径
+  servlet:
+    context-path: /note/api
+
+#日志配置
+logging:
+  level:
+    cn.lyj.blog.sys.mapper: debug
+
+#文件最大上传
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 10Mb
+      max-file-size: 10Mb
+      max-request-size: 10Mb
+
+  profiles:
+    active: dev
+
+
+  # 日期格式化输出
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  # 关闭资源文件映射，目的处理404路径返回JDON;如果swagger资源路径无法访问，需要手动映射
+  resources:
+    add-mappings: false
+  ### 让mvc直接抛出异常
+  mvc:
+    throw-exception-if-no-handler-found: false
+
+
+# MyBatis
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  typeAliasesPackage: cn.yj.notes.core.entity
+  global-config:
+    db-type: mysql
+    # Mapper 对应的 XML 文件，默认不自动刷新
+    #如果配置了该属性，Mapper 对应的 XML 文件会自动刷新，更改 XML 文件后，无需再次重启工程
+    refresh: true
+    db-config:
+      logic-delete-value: 1       # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0   # 逻辑未删除值(默认为 0)
+      table-prefix: tb_  # 统一表前缀名
+  configuration:
+    map-underscore-to-camel-case: true
+    # 延迟加载（按需加载） 在一对多或者一对一分步查询时候按需加载
+#    lazy-loading-enabled: true
+#    aggressive-lazy-loading: false
+#    cache-enabled: true
+
+
+
+
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yj.notes.core.mapper.MenuMapper">
+
+
+    <resultMap id="BaseResultMap" type="cn.yj.notes.core.entity.Menu">
+        <id column="pid" property="id"/>
+        <result column="name" property="name"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="article_id" property="articleId"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        m.id as pid, m.parent_id as parentId,m.article_id,m.name,m.sort
+    </sql>
+
+    <resultMap id="TreeDataResultMap" type="cn.yj.notes.core.dto.MenuTreeDto">
+        <id column="pid" property="id" jdbcType="INTEGER"/>
+        <id column="name" property="name" jdbcType="INTEGER"/>
+        <id column="sort" property="sort" jdbcType="INTEGER"/>
+        <id column="parent_id" property="parentId" jdbcType="INTEGER"/>
+        <id column="article_id" property="articleId" jdbcType="INTEGER"/>
+        <collection column="pid" property="children" ofType="cn.yj.notes.core.dto.MenuTreeDto"
+                    select="personTree"></collection>
+    </resultMap>
+
+    <select id="selectTree" resultMap="TreeDataResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tb_menu m WHERE m.parent_id =0 and m.deleted = 0
+
+        <if test="status !=null and status!=''">
+            and status=#{status}
+        </if>
+        <if test="name !=null and name!=''">
+            and m.name like concat('%',#{name},'%')
+        </if>
+        order by m.sort ASC
+    </select>
+
+
+    <select id="personTree" resultMap="TreeDataResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tb_menu m
+        WHERE m.parent_id=#{pid} and m.deleted = 0 order by m.sort ASC
+    </select>
+
+</mapper>

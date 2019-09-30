@@ -986,7 +986,7 @@ mavon-editor {
   padding-inline-start: 20px !important;
 }
 .olCheck {
-  color: #409eff;
+  color: #409eff !important;
 }
 .v-note-navigation-wrapper .v-note-navigation-title,
 .v-note-navigation-wrapper .v-note-navigation-content {

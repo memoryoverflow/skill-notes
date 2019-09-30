@@ -23,6 +23,9 @@ note:文件夹 为后端项目
 导入IDEA即可，数据库文件不需要导入，只需要建好一个数据库即可，项目跑起来自动建表；
 
 
+文章的图片回显 用nginx访问
+
+
 如果生成表失败，请手动导入sql；
 
 主动生成表的starter ⚠️源码：https://github.com/memoryoverflow/forward-generation-starter

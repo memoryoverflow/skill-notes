@@ -1045,4 +1045,17 @@ mavon-editor {
   word-break: break-all;
   overflow: hidden;
 }
+.Article .markdown-body p,.Article .markdown-body td, .Article .markdown-body li {
+  margin-block-start: 1em !important;
+  margin-block-end: 1em !important;
+  margin-inline-start: 0px !important;
+  margin-inline-end: 0px !important;
+  font-size: 20px !important;
+}
+.Article .markdown-body h2{
+  padding-left: 0px !important;
+}
+.Article .markdown-body code{
+      font-size: 130% !important;;
+}
 </style>

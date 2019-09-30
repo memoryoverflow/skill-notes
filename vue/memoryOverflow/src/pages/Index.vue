@@ -65,7 +65,11 @@ export default {
   },
   methods: {
     checkLogin() {
-      
+      this.$get("/checkLogin", {}).then(res => {
+        if (res.code != 0) {
+          window.localStorage.removeItem("memoryoverflow.login");
+        }
+      });
     },
     jumpHome(url) {
       this.$router.push({ path: url });
